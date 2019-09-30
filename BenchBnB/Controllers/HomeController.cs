@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BenchBnB.Data;
+using BenchBnB.Models;
+using BenchBnB.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +11,19 @@ namespace BenchBnB.Controllers
 {
     public class HomeController : Controller
     {
+        private Context context;
+
+        public HomeController()
+        {
+            context = new Context();
+        }
+
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            BenchRepository repo = new BenchRepository(context);
+            List<User> users = repo.GetUsers();
 
-            return View();
+            return View("Index", users);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using BenchBnB.Models;
 using System.Data.Entity;
 
-namespace BenchBnB.Context
+namespace BenchBnB.Data
 {
     public class DatabaseInitializer : DropCreateDatabaseAlways<Context>
     {

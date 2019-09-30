@@ -1,4 +1,4 @@
-﻿using BenchBnB.Context;
+﻿using BenchBnB.Data;
 using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;

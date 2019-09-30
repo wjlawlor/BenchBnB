@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace BenchBnB.Context
+namespace BenchBnB.Data
 {
     public class Context : DbContext
     {
