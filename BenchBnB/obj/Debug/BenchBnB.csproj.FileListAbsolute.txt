@@ -30,3 +30,15 @@ C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\System.Web.Optimization.xml
 C:\Users\Bill\Desktop\BenchBnB\BenchBnB\obj\Debug\BenchBnB.csprojResolveAssemblyReference.cache
 C:\Users\Bill\Desktop\BenchBnB\BenchBnB\obj\Debug\BenchBnB.dll
 C:\Users\Bill\Desktop\BenchBnB\BenchBnB\obj\Debug\BenchBnB.pdb
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\Unity.Abstractions.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\Unity.Container.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\Unity.Mvc5.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\Unity.WebApi.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\Unity.Abstractions.pdb
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\Unity.Container.pdb
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.SqlServer.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.xml
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.SqlServer.xml

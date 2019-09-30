@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BenchBnB.Context;
+using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace BenchBnB
@@ -16,6 +13,8 @@ namespace BenchBnB
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Database.SetInitializer(new DatabaseInitializer());
         }
     }
 }
