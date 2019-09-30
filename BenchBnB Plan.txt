@@ -1,0 +1,158 @@
+README
+
+=== PLAN ===
+- Set up project in VS, getting Unity and EF packages; also,
+ set up Git repository and utlitize issues list / project kanban layout.
+- Create Models with Properties and Methods.
+- Establish landing page / login page / register page, with authorization.
+- Get Entity Framework and the Database up and running.
+- Implement "Add Bench"; no map for now, just a button to bring you to a form to fill out. 
+- Implement scroll wheel and pagination on bench list.
+- Implement the ability to view the page of a specific bench.
+- Implement the ability to add reviews to a specific bench.
+- Find how to implement the map api call and functionality onto the pages it belongs.
+- Refactor adding a bench via map clicks.
+- Fix BootStrap. Somehow.
+
+=== MODELS ===
+Bench
+	Id
+	Name
+	Seats
+	Description
+	Latitude
+	Longitude
+	Creator
+	DateDiscovered
+	Rating()
+
+User
+	Id
+	First Name
+	Last Name
+	Email (Username)
+
+Review
+	Id
+	User
+	Bench
+	Description
+	Rating
+	DateCreated
+
+=== PAGES ===
+- (MASTER PAGE) -
+Header
+	if [Not Authorized]
+		Login / Register prompt
+	if [Authorized]
+		Welcome message
+		Log out button
+			Redirects to "Landing Page"
+Bootstrap <- Not working.
+
+- (LANDING PAGE) BENCH LIST -
+[No Authorization]
+'BenchController' {Index}
+	Map
+		Api Call
+		Constrains list
+		OnClick
+		[POST]?
+			Empty Space
+				=> "Add Bench" with Lat/Long
+			Bench Marker
+				=> "View Bench" of Lat/Long
+	Bench List
+		Database Call
+		Pagination (?)
+	Bench List Query
+		Seat count
+			Upper / Lower bounds
+
+- ADD BENCH -
+[Authorization]
+	Redirects to "Login Redirect"
+'BenchController' {Add}
+	Submit button
+		[POST]
+		Redirect to "Landing Page"
+		Disabled when any credential field is empty
+	Cancel button
+		Redirects to "Landing Page"
+
+- VIEW BENCH -
+[No Authorization]
+'ReviewController' {Details} (Index)
+	[GET]
+		Description, Rating, Latitude, Longitude, Reviews
+			Rating = Average of Review.Rating
+			Reviews = "No reviews, yet" @ Rating IF no reviews
+
+- REVIEW BENCH -
+[Authorization]
+	Redirects to "Login Redirect"
+'ReviewController' {Review} 
+	Submit button
+		[POST]
+		Disabled when any credential field is empty
+		Redirects to "View Bench Page"
+	Cancel button
+		Redirects to "View Bench Page"
+
+- (LOGIN REDIRECT) LOGIN -
+[No Authorization]
+'AccountController' {Login}
+	Submit button
+		[POST]
+		Disabled when either credential field is empty
+		Data validation
+		Redirects to "Landing Page"
+	Register button
+		Redirects to register page
+	Cancel button
+		Redirects to "Landing Page"
+
+- REGISTER -
+[No Authorization]
+'AccountController' {Register}
+	Submit button
+		[POST]
+		Disabled when any credential field is empty
+		Data validation for duplicate emails.
+		Log user in
+		Redirects to "Landing Page"
+	Login button
+		Redirects to login page
+	Cancel button
+		Redirects to "Landing Page"
+		
+
+=== DATABASE STUFF ===
+- TABLES -
+User
+	Id PK
+	First Name
+	Last Name
+	Email (Username)
+		UNQIUE
+	Password
+		Hashed eventually
+
+Bench
+	Id PK
+	Name
+	Seats
+	Description
+	Latitude
+	Longitude
+	CreatorId FK User.Id
+	DateDiscovered
+
+Review
+	Id PK
+	UserId FK User.Id
+	BenchId FK Bench.Id
+	Rating
+	Description
+	DateCreated
