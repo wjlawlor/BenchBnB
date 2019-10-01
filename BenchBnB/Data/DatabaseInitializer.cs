@@ -32,8 +32,8 @@ namespace BenchBnB.Data
                 Name = "First Bench",
                 Seats =  2,
                 Description = "The first bench in the entire world.",
-                Latitude = 72.02134,
-                Longitude = 44.45249,
+                Latitude = 72.02134m,
+                Longitude = 44.45249m,
                 User = mo,
                 DateDiscovered = new DateTime(2019, 10, 1)
 
@@ -44,8 +44,8 @@ namespace BenchBnB.Data
                 Name = "Giga Bench",
                 Seats = 8,
                 Description = "A chonk, for sure.",
-                Latitude = 42.02134,
-                Longitude = 102.45243,
+                Latitude = 42.02134m,
+                Longitude = 102.45243m,
                 User = jason,
                 DateDiscovered = new DateTime(2019, 9, 29)
 
