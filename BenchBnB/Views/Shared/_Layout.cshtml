@@ -26,6 +26,7 @@
         <div>
             @if (Request.IsAuthenticated)
             {
+                <span>Hello @User.Identity.Name</span>
                 <div class="navbar-text navbar-right">
                     @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { style = "display: inline" }))
                     {

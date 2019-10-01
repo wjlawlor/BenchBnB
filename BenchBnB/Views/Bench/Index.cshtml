@@ -1,0 +1,36 @@
+﻿@model BenchBnB.Models.ViewModels.AllLists
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Bench Name</th>
+            <th>Submitter's Name</th>
+            <th>Description</th>
+            <th>Date Discovered</th>
+            <th>Lat</th>
+            <th>Long</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bench in Model.Benches)
+        {
+            <tr>
+                <td>@bench.Id</td>
+                <td>@bench.Name</td>
+                <td>@bench.User.FirstName @bench.User.LastName</td>
+                <td>@bench.Description</td>
+                <td>@bench.DateDiscovered.ToString("d")</td>
+                <td>@bench.Latitude</td>
+                <td>@bench.Longitude</td>
+            </tr>
+        }
+    </tbody>
+</table>

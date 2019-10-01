@@ -150,6 +150,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BenchController.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -170,6 +171,7 @@
   <ItemGroup>
     <Content Include="Content\my.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\buttonToggler.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -185,7 +187,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Bench\Index.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
