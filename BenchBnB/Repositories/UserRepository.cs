@@ -20,6 +20,17 @@ namespace BenchBnB.Repositories
             return _context.Users.ToList();
         }
 
+        public User GetUserByEmail(string email)
+        {
+            return _context.Users.SingleOrDefault(u => u.Email == email);
+        }
+
+        public void Insert(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+        }
+
         public bool LoginUser(string email, string password)
         {
             User user = _context.Users.SingleOrDefault(u => u.Email == email);
