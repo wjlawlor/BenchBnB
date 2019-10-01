@@ -1,5 +1,6 @@
 ﻿using BenchBnB.Data;
 using BenchBnB.Models;
+using BenchBnB.Models.ViewModels;
 using BenchBnB.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,21 @@ namespace BenchBnB.Controllers
 
         public ActionResult Index()
         {
-            BenchRepository repo = new BenchRepository(context);
-            List<User> users = repo.GetUsers();
+            UserRepository userRepo = new UserRepository(context);
+            List<User> users = userRepo.GetUsers();
 
-            return View("Index", users);
+            BenchRepository benchRepo = new BenchRepository(context);
+            List<Bench> benches = benchRepo.GetBenches();
+
+            ReviewRepository reviewRepo = new ReviewRepository(context);
+            List<Review> reviews = reviewRepo.GetReviews();
+
+            AllLists allLists = new AllLists();
+            allLists.Users = users;
+            allLists.Benches = benches;
+            allLists.Reviews = reviews;
+
+            return View("Index", allLists);
         }
     }
 }

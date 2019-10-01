@@ -7,17 +7,17 @@ using System.Web;
 
 namespace BenchBnB.Repositories
 {
-    public class BenchRepository
+    public class UserRepository
     {
         private Context _context;
-        public BenchRepository(Context context)
+        public UserRepository(Context context)
         {
             _context = context;
         }
 
-        public List<Bench> GetBenches()
+        public List<User> GetUsers()
         {
-            return _context.Benches.ToList();
+            return _context.Users.ToList();
         }
     }
 }

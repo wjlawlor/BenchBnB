@@ -1,9 +1,13 @@
-﻿@model List<BenchBnB.Models.User>
+﻿@model BenchBnB.Models.ViewModels.AllLists
+
+@{
+    ViewBag.Title = "Create Community";
+}
 
 <h1>AM I WORKING?</h1> 
 
-<table>
-    <thead>
+<table class="table">
+    <thead class="thead-dark">
         <tr>
             <th>Id</th>
             <th>First Name</th>
@@ -13,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in Model)
+        @foreach (var user in Model.Users)
         {
             <tr>
                 <td>@user.Id</td>
@@ -21,6 +25,60 @@
                 <td>@user.LastName</td>
                 <td>@user.Email</td>
                 <td>@user.Password</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Bench Name</th>
+            <th>Submitter's Name</th>
+            <th>Description</th>
+            <th>Date Discovered</th>
+            <th>Lat</th>
+            <th>Long</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bench in Model.Benches)
+        {
+            <tr>
+                <td>@bench.Id</td>
+                <td>@bench.Name</td>
+                <td>@bench.User.FirstName @bench.User.LastName</td>
+                <td>@bench.Description</td>
+                <td>@bench.DateDiscovered.ToString("d")</td>
+                <td>@bench.Latitude</td>
+                <td>@bench.Longitude</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Bench Name</th>
+            <th>Reviewer Name</th>
+            <th>Rating</th>
+            <th>Description</th>
+            <th>Date Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in Model.Reviews)
+        {
+            <tr>
+                <td>@review.Id</td>
+                <td>@review.Bench.Name</td>
+                <td>@review.User.FirstName @review.User.LastName</td>
+                <td>@review.Rating</td>
+                <td>@review.Description</td>
+                <td>@review.DateCreated.ToString("d")</td>
             </tr>
         }
     </tbody>

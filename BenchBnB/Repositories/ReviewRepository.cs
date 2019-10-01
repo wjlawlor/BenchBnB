@@ -1,23 +1,21 @@
 ﻿using BenchBnB.Data;
 using BenchBnB.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace BenchBnB.Repositories
 {
-    public class BenchRepository
+    public class ReviewRepository
     {
         private Context _context;
-        public BenchRepository(Context context)
+        public ReviewRepository(Context context)
         {
             _context = context;
         }
 
-        public List<Bench> GetBenches()
+        public List<Review> GetReviews()
         {
-            return _context.Benches.ToList();
+            return _context.Reviews.ToList();
         }
     }
 }
