@@ -9,6 +9,19 @@ namespace BenchBnB.Models
     {
         public Bench() { }
 
+        public Bench(int id, string name, int seats, string description, decimal latitude, decimal longitude, User user)
+        {
+            Id = id;
+            Name = name;
+            Seats = seats;
+            Description = description;
+            Latitude = latitude;
+            Longitude = longitude;
+
+            User = user;
+            DateDiscovered = DateTime.Now;
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public int Seats { get; set; }

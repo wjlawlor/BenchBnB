@@ -7,7 +7,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "LoginForm" }))
 {
     @Html.ValidationSummary()
     

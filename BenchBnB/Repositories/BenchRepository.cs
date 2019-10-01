@@ -19,5 +19,11 @@ namespace BenchBnB.Repositories
         {
             return _context.Benches.ToList();
         }
+
+        public void Insert(Bench bench)
+        {
+            _context.Benches.Add(bench);
+            _context.SaveChanges();
+        }
     }
 }

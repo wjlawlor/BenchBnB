@@ -29,5 +29,31 @@ namespace BenchBnB.Controllers
 
             return View("Index", allLists);
         }
+
+        [Authorize]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Add(Bench bench)
+        {
+            UserRepository userRepo = new UserRepository(context);
+            User user = userRepo.GetUserByEmail(User.Identity.Name);
+
+            BenchRepository benchRepo = new BenchRepository(context);
+
+            if (ModelState.IsValid)
+            {
+                Bench newBench = new Bench(0, bench.Name, bench.Seats, bench.Description, bench.Latitude, bench.Longitude, user);
+                benchRepo.Insert(newBench);
+
+                return RedirectToAction("Index", "Home", null);
+            }
+
+            return View("Create", bench);
+        }
     }
 }

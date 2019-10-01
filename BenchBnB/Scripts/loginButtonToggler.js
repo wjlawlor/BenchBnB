@@ -1,22 +1,18 @@
 ﻿let toggleButton = function () {
+    const form = document.querySelector('#LoginForm');
     const email = document.querySelector('#Email');
     const password = document.querySelector('#Password');
-    const loginButton = document.querySelector('#loginButton');
+    const submitButton = document.querySelector('#loginButton');
 
-    email.addEventListener('keyup', () => {
-        if (email.value === '' || password.value === '') {
-            loginButton.disabled = true;
+    form.addEventListener('keyup', () => {
+        if (email.value === '' ||
+            password.value === '')
+        {
+            submitButton.disabled = true;
         }
-        else {
-            loginButton.disabled = false
-        }
-    });
-    password.addEventListener('keyup', () => {
-        if (email.value === '' || password.value === '') {
-            loginButton.disabled = true;
-        }
-        else {
-            loginButton.disabled = false
+        else
+        {
+            submitButton.disabled = false;
         }
     });
 };

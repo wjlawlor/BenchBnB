@@ -7,7 +7,7 @@
 
 <h2>Register</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "RegisterForm" }))
 {
     @Html.ValidationSummary()
 
@@ -37,7 +37,7 @@
     </div>
 
     <div>
-        <button id="registerButton" type="submit" class="btn btn-success btn-lg" disabled="true">Submit</button>
+        <button id="registerButton" type="submit" class="btn btn-success btn-lg" disabled>Submit</button>
         @Html.ActionLink("Cancel", "Index", "Bench", null, new { @class = "btn btn-secondary btn-lg" })
     </div>
 }
