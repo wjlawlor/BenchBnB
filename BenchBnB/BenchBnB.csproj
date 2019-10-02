@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\addBenchButtonToggler.js" />
+    <Content Include="Scripts\scrollTest.js" />
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>

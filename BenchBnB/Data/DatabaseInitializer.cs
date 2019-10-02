@@ -51,6 +51,54 @@ namespace BenchBnB.Data
 
             };
             context.Benches.Add(bench2);
+            var bench3 = new Bench()
+            {
+                Name = "Average Bench",
+                Seats = 4,
+                Description = "Nothing to see here.",
+                Latitude = 56m,
+                Longitude = 34.3m,
+                User = jason,
+                DateDiscovered = new DateTime(2019, 9, 29)
+
+            };
+            context.Benches.Add(bench3);
+            var bench4 = new Bench()
+            {
+                Name = "Not A Bench",
+                Seats = 0,
+                Description = "How is this even allowed?",
+                Latitude = 0.00m,
+                Longitude = 0.00m,
+                User = mo,
+                DateDiscovered = new DateTime(2019, 9, 29)
+
+            };
+            context.Benches.Add(bench4);
+            var bench5 = new Bench()
+            {
+                Name = "TSM Bench",
+                Seats = 8,
+                Description = "Akkadian, Grig.",
+                Latitude = 2,
+                Longitude = 3,
+                User = jason,
+                DateDiscovered = new DateTime(2019, 9, 1)
+
+            };
+            context.Benches.Add(bench5);
+            var bench6 = new Bench()
+            {
+                Name = "The Last Bench",
+                Seats = 3,
+                Description = "But not least.",
+                Latitude = 100.3423m,
+                Longitude = 33.45234m,
+                User = mo,
+                DateDiscovered = new DateTime(2019, 9, 29)
+
+            };
+            context.Benches.Add(bench6);
 
             // Reviews
             var review1 = new Review()
