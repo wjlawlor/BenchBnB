@@ -63,6 +63,8 @@ namespace BenchBnB.Controllers
             BenchRepository benchRepo = new BenchRepository(context);
             Bench bench = benchRepo.GetBenchById(id.Value);
 
+            if (bench == null) { return RedirectToAction("Index"); }
+
             ReviewRepository reviewRepo = new ReviewRepository(context);
             List<Review> reviews = reviewRepo.GetReviewsByBench(id.Value);
 
@@ -70,6 +72,7 @@ namespace BenchBnB.Controllers
             List<User> users = userRepo.GetUsers();
 
             var viewModel = new BenchViewModel();
+            viewModel.Id = bench.Id;
             viewModel.Name = bench.Name;
             viewModel.Seats = bench.Seats;
             viewModel.Description = bench.Description;

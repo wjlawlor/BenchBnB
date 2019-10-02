@@ -1,0 +1,48 @@
+﻿@model BenchBnB.Models.Review
+
+@{
+    ViewBag.Title = "Make A Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Add", "Review", FormMethod.Post, new { id = "AddReviewForm" }))
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Bench.Name)
+            @Html.TextBoxFor(m => m.Bench.Name, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.User.Email)
+            @Html.TextBoxFor(m => m.User.FirstName, new { @class = "form-control", disabled = "true" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Rating)
+            @Html.TextBoxFor(m => m.Rating, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xl-5 ml-0">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div>
+        <button id="addReviewButton" type="submit" class="btn btn-success btn-lg" disabled>Submit</button>
+        @Html.ActionLink("Cancel", "View", "Bench", new { id = Model.Bench.Id }, new { @class = "btn btn-secondary btn-lg" })
+    </div>
+}
+
+<script src="~/Scripts/addReviewButtonToggler.js"></script>
