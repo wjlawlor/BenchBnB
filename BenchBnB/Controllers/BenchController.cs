@@ -55,5 +55,31 @@ namespace BenchBnB.Controllers
 
             return View("Create", bench);
         }
+
+        public ActionResult View(int? id)
+        {
+            if (id == null) { return RedirectToAction("Index"); }
+
+            BenchRepository benchRepo = new BenchRepository(context);
+            Bench bench = benchRepo.GetBenchById(id.Value);
+
+            ReviewRepository reviewRepo = new ReviewRepository(context);
+            List<Review> reviews = reviewRepo.GetReviewsByBench(id.Value);
+
+            UserRepository userRepo = new UserRepository(context);
+            List<User> users = userRepo.GetUsers();
+
+            var viewModel = new BenchViewModel();
+            viewModel.Name = bench.Name;
+            viewModel.Seats = bench.Seats;
+            viewModel.Description = bench.Description;
+            viewModel.DateDiscovered = bench.DateDiscovered;
+            viewModel.Latitude = bench.Latitude;
+            viewModel.Longitude = bench.Longitude;
+            viewModel.Reviews = reviews;
+            viewModel.Users = users;
+
+            return View("View", viewModel);
+        }
     }
 }

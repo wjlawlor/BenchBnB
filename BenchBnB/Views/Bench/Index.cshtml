@@ -7,17 +7,18 @@
 
 <h2>@ViewBag.Title</h2>
 
-<div id="scrollTable" class="scrollable-table">
-    <table id="benchList" class="table table-hover table-scroll my-custom-scrollbar">
+<div id="scrollTable" class="scrollable-table" style="width: 70%">
+    <table id="benchList" class="table table-hover table-scroll">
         <thead class="thead-dark">
             <tr>
                 <th>Id</th>
-                <th>Bench Name</th>
-                <th>Submitter's Name</th>
+                <th>Bench</th>
+                <th>User</th>
                 <th>Description</th>
-                <th>Date Discovered</th>
+                <th>Discovered</th>
                 <th>Lat</th>
                 <th>Long</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -31,12 +32,14 @@
                     <td>@bench.DateDiscovered.ToString("d")</td>
                     <td>@bench.Latitude</td>
                     <td>@bench.Longitude</td>
+                    <td>@Html.ActionLink("View", "View", "Bench", new { id = bench.Id }, new { @class = "btn btn-primary btn-sm"})</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 
-    <p>@Html.ActionLink("Add A Bench!", "Add", null, new { @class = "btn btn-success" })</p>
+<br />
+<p>@Html.ActionLink("Add A Bench!", "Add", null, new { @class = "btn btn-success" })</p>
 
 <script src="~/Scripts/scrollTest.js"></script>

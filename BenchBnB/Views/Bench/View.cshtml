@@ -1,0 +1,78 @@
+﻿@model BenchBnB.Models.ViewModels.BenchViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Add", "Bench", FormMethod.Post, new { id = "AddForm" }))
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Seats)
+            @Html.TextBoxFor(m => m.Seats, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xl-5 ml-0">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Latitude)
+            @Html.TextBoxFor(m => m.Latitude, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Longitude)
+            @Html.TextBoxFor(m => m.Longitude, new { @class = "form-control", disabled = "disabled" })
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back", "Index", "Bench", null, new { @class = "btn btn-secondary btn-lg" })
+    </div>
+}
+
+<br />
+<div id="scrollTable" class="scrollTable" style="width: 70%">
+    <table id="benchList" class="table table-hover table-scroll">
+        <thead class="thead-dark">
+            <tr>
+                <th>Rating</th>
+                <th>User</th>
+                <th>Description</th>
+                <th>Created</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Model.Reviews)
+            {
+                <tr>
+                    <td>@review.Rating</td>
+                    <td>@review.User.FirstName</td>
+                    <td>@review.Description</td>
+                    <td>@review.DateCreated.ToString("d")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
