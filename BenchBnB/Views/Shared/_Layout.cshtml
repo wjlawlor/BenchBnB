@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="~/Home/Index">Bench BnB</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -29,7 +29,7 @@
         <div>
             @if (Request.IsAuthenticated)
             {
-                <span>Hello @User.Identity.Name</span>
+                <span>Logged in as: @User.Identity.Name</span>
                 <div class="navbar-text navbar-right">
                     @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { style = "display: inline" }))
                     {

@@ -22,13 +22,6 @@
         })
     });
 
-    debugger;
-    // var marker = new ol.Feature({
-    //     geometry: new ol.geom.Point(
-    //       ol.proj.fromLonLat([-74.006, 40.7127])
-    //     )
-    // });
-
     var vectorSource = new ol.source.Vector({});
 
     const markerArray = [];
@@ -38,18 +31,22 @@
                 ol.proj.fromLonLat([bench.Longitude, bench.Latitude])
             )
         });
-        console.log(bench)
+        console.log(bench);
         vectorSource.addFeature(marker);
-        //markerArray.push(marker);
     });
-
-    //var vectorSource = new ol.source.Vector({
-    //    features: markerArray
-    //});
 
     var markerVectorLayer = new ol.layer.Vector({
         source: vectorSource
     });
     map.addLayer(markerVectorLayer);
+
+    map.on('singleclick', async function (event) {
+        debugger;
+        console.log(event.coordinate);
+        event.coordinate = ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326');
+        latitude = event.coordinate[1];
+        longitude = event.coordinate[0];
+        window.location.href = "Bench/Add?Lat=" + latitude + "&Lon=" + longitude;
+    });
 
 })();

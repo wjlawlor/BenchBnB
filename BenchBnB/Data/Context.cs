@@ -21,10 +21,10 @@ namespace BenchBnB.Data
             //
             modelBuilder.Entity<Bench>()
                 .Property(p => p.Latitude)
-                    .HasPrecision(8, 5);
+                    .HasPrecision(20, 17);
             modelBuilder.Entity<Bench>()
                 .Property(p => p.Longitude)
-                    .HasPrecision(8, 5);
+                    .HasPrecision(20, 17);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }

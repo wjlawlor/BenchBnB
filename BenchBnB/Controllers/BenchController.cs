@@ -35,9 +35,16 @@ namespace BenchBnB.Controllers
         }
 
         [Authorize]
-        public ActionResult Add()
+        public ActionResult Add(decimal? lat, decimal? lon)
         {
-            return View();
+            var viewModel = new Bench();
+
+            if (lat.HasValue && lon.HasValue)
+            {
+                viewModel.Latitude = lat.Value;
+                viewModel.Longitude = lon.Value;
+            }
+            return View("Add", viewModel);
         }
 
         [Authorize]

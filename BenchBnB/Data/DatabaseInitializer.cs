@@ -92,7 +92,7 @@ namespace BenchBnB.Data
                 Name = "The Last Bench",
                 Seats = 3,
                 Description = "But not least.",
-                Latitude = 100.3423m,
+                Latitude = -35.3213m,
                 Longitude = 33.45234m,
                 User = mo,
                 DateDiscovered = new DateTime(2019, 9, 29)

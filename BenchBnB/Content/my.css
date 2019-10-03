@@ -2,12 +2,12 @@
 	color: #111 !important;
 }
 
-#scrollTable {
-     height: 300px;
+.scrollable-table {
+     height: 400px;
      overflow-y: scroll;
  }
 
 .map {
     height: 400px;
-    width: 50%;
+    width: 40%;
 }
