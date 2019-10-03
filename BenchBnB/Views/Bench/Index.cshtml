@@ -1,11 +1,14 @@
 ﻿@model BenchBnB.Models.ViewModels.AllLists
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Bench List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
+
+<div id="map" class="map"></div>
+<script src="~/Scripts/map.js"></script>
 
 <div id="scrollTable" class="scrollable-table" style="width: 70%">
     <table id="benchList" class="table table-hover table-scroll">
@@ -41,5 +44,3 @@
 
 <br />
 <p>@Html.ActionLink("Add A Bench!", "Add", null, new { @class = "btn btn-success" })</p>
-
-<script src="~/Scripts/scrollTest.js"></script>

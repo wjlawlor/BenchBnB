@@ -18,6 +18,14 @@ namespace BenchBnB.Data
                     .WithMany(b => b.Reviews)
                     .WillCascadeOnDelete(false);
 
+            //
+            modelBuilder.Entity<Bench>()
+                .Property(p => p.Latitude)
+                    .HasPrecision(8, 5);
+            modelBuilder.Entity<Bench>()
+                .Property(p => p.Longitude)
+                    .HasPrecision(8, 5);
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }

@@ -2,6 +2,7 @@
 using BenchBnB.Models;
 using BenchBnB.Models.ViewModels;
 using BenchBnB.Repositories;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -23,9 +24,12 @@ namespace BenchBnB.Controllers
             BenchRepository benchRepo = new BenchRepository(context);
             List<Bench> benches = benchRepo.GetBenches();
 
+            var json = JsonConvert.SerializeObject(benches);
+
             AllLists allLists = new AllLists();
             allLists.Users = users;
             allLists.Benches = benches;
+            allLists.JsonList = json;
 
             return View("Index", allLists);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace BenchBnB.Models
 {
@@ -23,6 +24,7 @@ namespace BenchBnB.Models
         public User User { get; set; }
 
         public int BenchId { get; set; }
+        [JsonIgnore]
         public Bench Bench { get; set; }
 
         public string Description { get; set; }
