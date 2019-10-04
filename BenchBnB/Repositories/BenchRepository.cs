@@ -18,7 +18,7 @@ namespace BenchBnB.Repositories
 
         public List<Bench> GetBenches()
         {
-            return _context.Benches.ToList();
+            return _context.Benches.Include(b => b.Reviews).ToList();
         }
 
         public Bench GetBenchById(int id)
@@ -36,7 +36,7 @@ namespace BenchBnB.Repositories
         {
             using (var context = new Context())
             {
-                return await context.Benches.ToListAsync();
+                return await context.Benches.Include(b => b.Reviews).Include(b => b.User).ToListAsync();
             }
         }
     }

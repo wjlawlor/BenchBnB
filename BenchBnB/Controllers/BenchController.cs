@@ -17,16 +17,13 @@ namespace BenchBnB.Controllers
             context = new Context();
         }
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            UserRepository userRepo = new UserRepository(context);
-            List<User> users = userRepo.GetUsers();
+            //UserRepository userRepo = new UserRepository(context);
+            //List<User> users = userRepo.GetUsers();
             BenchRepository benchRepo = new BenchRepository(context);
             List<Bench> benches = benchRepo.GetBenches();
-
-            //AllLists allLists = new AllLists();
-            //allLists.Users = users;
-            //allLists.Benches = benches;
 
             return View("Index", benches);
         }

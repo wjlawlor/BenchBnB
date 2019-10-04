@@ -8,7 +8,6 @@
 
     const response = await getListOfBenches();
     const benchInfo = await response.json();
-    console.log(benchInfo)
 
     const inputField = document.querySelector('#SeatFilter')
     const minSeats = document.querySelector('#minSeats');
@@ -17,16 +16,13 @@
     // Filter Bench List
     let filterMinMaxSeats = function () {
         inputField.addEventListener('change', () => {
-            console.log("change event");
             let filteredBenches = [];
             if (minSeats.value === '' && maxSeats.value === ''){
-                console.log("no values!")
                 benchInfo.forEach(bench => {
                     filteredBenches.push(bench);
                 });
             }
             if (minSeats.value !== '' && maxSeats.value === ''){
-                console.log("min value!");
                 benchInfo.forEach(bench => {
                     if (bench.Seats >= minSeats.value) {
                         filteredBenches.push(bench);
@@ -34,7 +30,6 @@
                 });
             }
             if (minSeats.value === '' && maxSeats.value !== ''){          
-                console.log("max value!");
                 benchInfo.forEach(bench => {
                     if (bench.Seats <= maxSeats.value) {
                         filteredBenches.push(bench);
@@ -42,7 +37,6 @@
                 });
             }
             if (minSeats.value !== '' && maxSeats.value !== ''){ 
-                console.log("both values!");
                 benchInfo.forEach(bench => {
                     if (bench.Seats >= minSeats.value && bench.Seats <= maxSeats.value) {
                         filteredBenches.push(bench);
@@ -59,6 +53,9 @@
         HTML += '<thead class="thead-dark">';
         HTML += '<tr>';
         HTML += '<th>Bench</th>';
+        HTML += '<th>Seats</th>';
+        HTML += '<th>User</th>';
+        HTML += '<th>Avg Rating</th>';
         HTML += '<th>Description</th>';
         HTML += '</tr>';
         HTML += '</thead>';
@@ -66,7 +63,32 @@
         benchList.forEach( bench => {
             HTML += '<tr ' + 'data="Bench/View/' + bench.Id + '">';
             HTML += '<td>' + bench.Name + '</td>';
-            HTML += '<td>' + bench.Description + '</td>';
+            HTML += '<td>' + bench.Seats + '</td>';
+            HTML += '<td>' + bench.User.FirstName + ' ' +bench.User.LastName[0] + '.</td>';
+            if (bench.AverageRating === null)
+            {
+                HTML += '<td>No rating.</td>';
+            }
+            else
+            {
+                HTML += '<td>' + bench.AverageRating + '</td>';
+            }
+
+            const array = bench.Description.split(" ");           
+            HTML += '<td>';
+            if (array.length <= 10)
+            {
+                HTML += bench.Description;
+            }
+            else 
+            {
+                for(let i = 0; i < 10 ; i++)
+                {
+                    HTML += array[i] + ' ';
+                }
+                HTML += '...';
+            }
+            HTML+= '</td>';
             HTML += '</tr>';
         });
         HTML += '</tbody>';

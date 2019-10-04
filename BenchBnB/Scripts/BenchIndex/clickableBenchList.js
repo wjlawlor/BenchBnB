@@ -9,5 +9,5 @@ table.addEventListener('click', (event) => {
     console.log(tr);
     console.log(redirectLink);
 
-    //window.location.href = redirectLink;
+    window.location.href = redirectLink;
 });

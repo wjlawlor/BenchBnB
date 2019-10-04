@@ -39,6 +39,20 @@ namespace BenchBnB.Models
     
         //ImageMethod()
 
-        //RatingMethod()
+        public decimal? Rating
+        {
+            get {
+                if (Reviews.Count > 0)
+                {
+                    int sum = 0;
+                    foreach (var review in Reviews)
+                    {
+                        sum += review.Rating;
+                    }
+                    return sum / Reviews.Count;
+                }
+                return null;
+            }
+        }
     }
 }

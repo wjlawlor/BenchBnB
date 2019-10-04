@@ -151,7 +151,7 @@
   <ItemGroup>
     <Content Include="Scripts\addBenchButtonToggler.js" />
     <Content Include="Scripts\addReviewButtonToggler.js" />
-    <Content Include="Scripts\BenchIndex\filterBenchList.js" />
+    <Content Include="Scripts\BenchIndex\clickableBenchList.js" />
     <Content Include="Scripts\BenchIndex\map.js" />
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
@@ -170,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bench.cs" />
+    <Compile Include="Models\DTOs\BenchDTO.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModels\AllLists.cs" />
