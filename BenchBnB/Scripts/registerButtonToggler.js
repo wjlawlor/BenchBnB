@@ -1,40 +1,21 @@
 ﻿let toggleButton = function () {
+    const form = document.querySelector('#RegisterForm');
     const firstName = document.querySelector('#FirstName');
     const lastName = document.querySelector('#LastName');
     const email = document.querySelector('#Email');
     const password = document.querySelector('#Password');
-    const loginButton = document.querySelector('#registerButton');
+    const submitButton = document.querySelector('#registerButton');
 
-    firstName.addEventListener('keyup', () => {
-        if (firstName.value === '' || lastName.value === '' || email.value === '' || password.value === '') {
-            loginButton.disabled = true;
+    form.addEventListener('keyup', () => {
+        if (firstName.value === '' ||
+            lastName.value === '' ||
+            email.value === '' ||
+            password.value === '')
+        {
+            submitButton.disabled = true;
         }
         else {
-            loginButton.disabled = false
-        }
-    });
-    lastName.addEventListener('keyup', () => {
-        if (firstName.value === '' || lastName.value === '' || email.value === '' || password.value === '') {
-            loginButton.disabled = true;
-        }
-        else {
-            loginButton.disabled = false
-        }
-    });
-    email.addEventListener('keyup', () => {
-        if (firstName.value === '' || lastName.value === '' || email.value === '' || password.value === '') {
-            loginButton.disabled = true;
-        }
-        else {
-            loginButton.disabled = false
-        }
-    });
-    password.addEventListener('keyup', () => {
-        if (firstName.value === '' || lastName.value === '' || email.value === '' || password.value === '') {
-            loginButton.disabled = true;
-        }
-        else {
-            loginButton.disabled = false
+            submitButton.disabled = false;
         }
     });
 };

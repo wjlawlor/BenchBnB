@@ -17,5 +17,16 @@ namespace BenchBnB.Repositories
         {
             return _context.Reviews.ToList();
         }
+
+        public List<Review> GetReviewsByBench(int id)
+        {
+            return _context.Reviews.Where(r => r.BenchId == id).ToList();
+        }
+
+        public void Insert(Review review)
+        {
+            _context.Reviews.Add(review);
+            _context.SaveChanges();
+        }
     }
 }

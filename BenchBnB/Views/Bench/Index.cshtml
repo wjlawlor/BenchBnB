@@ -5,32 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>Id</th>
-            <th>Bench Name</th>
-            <th>Submitter's Name</th>
-            <th>Description</th>
-            <th>Date Discovered</th>
-            <th>Lat</th>
-            <th>Long</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var bench in Model.Benches)
-        {
+<div id="scrollTable" class="scrollable-table" style="width: 70%">
+    <table id="benchList" class="table table-hover table-scroll">
+        <thead class="thead-dark">
             <tr>
-                <td>@bench.Id</td>
-                <td>@bench.Name</td>
-                <td>@bench.User.FirstName @bench.User.LastName</td>
-                <td>@bench.Description</td>
-                <td>@bench.DateDiscovered.ToString("d")</td>
-                <td>@bench.Latitude</td>
-                <td>@bench.Longitude</td>
+                <th>Id</th>
+                <th>Bench</th>
+                <th>User</th>
+                <th>Description</th>
+                <th>Discovered</th>
+                <th>Lat</th>
+                <th>Long</th>
+                <th>&nbsp;</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var bench in Model.Benches)
+            {
+                <tr>
+                    <td>@bench.Id</td>
+                    <td>@bench.Name</td>
+                    <td>@bench.User.FirstName @bench.User.LastName</td>
+                    <td>@bench.Description</td>
+                    <td>@bench.DateDiscovered.ToString("d")</td>
+                    <td>@bench.Latitude</td>
+                    <td>@bench.Longitude</td>
+                    <td>@Html.ActionLink("View", "View", "Bench", new { id = bench.Id }, new { @class = "btn btn-primary btn-sm"})</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<br />
+<p>@Html.ActionLink("Add A Bench!", "Add", null, new { @class = "btn btn-success" })</p>
+
+<script src="~/Scripts/scrollTest.js"></script>
