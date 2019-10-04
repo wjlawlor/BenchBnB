@@ -15,9 +15,20 @@ namespace BenchBnB.Repositories
             _context = context;
         }
 
-        public List<User> GetUsers()
+        public List<Bench> GetBenches()
         {
-            return _context.Users.ToList();
+            return _context.Benches.ToList();
+        }
+
+        public Bench GetBenchById(int id)
+        {
+            return _context.Benches.SingleOrDefault(b => b.Id == id);
+        }
+
+        public void Insert(Bench bench)
+        {
+            _context.Benches.Add(bench);
+            _context.SaveChanges();
         }
     }
 }

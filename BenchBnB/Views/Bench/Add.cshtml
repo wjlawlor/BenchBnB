@@ -1,0 +1,55 @@
+﻿@model BenchBnB.Models.Bench
+
+@{
+    ViewBag.Title = "Add Bench";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Add", "Bench", FormMethod.Post, new { id = "AddForm" }))
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Seats)
+            @Html.TextBoxFor(m => m.Seats, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xl-5 ml-0">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Latitude)
+            @Html.TextBoxFor(m => m.Latitude, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-xs-3 ml-3">
+            @Html.LabelFor(m => m.Longitude)
+            @Html.TextBoxFor(m => m.Longitude, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div>
+        <button id="addBenchButton" type="submit" class="btn btn-success btn-lg" disabled>Submit</button>
+        @Html.ActionLink("Cancel", "Index", "Bench", null, new { @class = "btn btn-secondary btn-lg" })
+    </div>
+}
+
+<script src="~/Scripts/addBenchButtonToggler.js"></script>
