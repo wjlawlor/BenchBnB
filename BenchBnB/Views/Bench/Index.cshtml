@@ -1,4 +1,4 @@
-﻿@model BenchBnB.Models.ViewModels.AllLists
+﻿@model List<BenchBnB.Models.Bench>
 
 @{
     ViewBag.Title = "Bench List";
@@ -7,7 +7,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-<div class="float-right">
+<div id="SeatFilter" class="float-right">
     <div>
     @Html.Label("Minimum Seats")
     @Html.TextBox("minSeats", "")
@@ -22,29 +22,14 @@
     <div id="map" class="map float-left"></div>
 
 
-
-    <div class="scrollable-table float-right" style="width: 60%">
-        <table id="table" class="table table-hover table-scroll">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Bench</th>
-                    <th>Description</th>
-                    <th>&nbsp;</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var bench in Model.Benches)
-            {
-                    <tr data="~/Bench/View/@bench.Id">
-                        <td>@bench.Name</td>
-                        <td>@bench.Description</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div id="myDynamicTable" class="scrollable-table float-right" style="width: 60%">
     </div>
+    
 </div>
-<script src="~/Scripts/map.js"></script>
-<script src="~/Scripts/benchList.js"></script>
+
+
+<script src="~/Scripts/BenchIndex/tableGenerator.js"></script>
+<script src="~/Scripts/BenchIndex/map.js"></script>
+<script src="~/Scripts/BenchIndex/filterBenchList.js"></script>
 <br />
 <p>@Html.ActionLink("Add A Bench!", "Add", null, new { @class = "btn btn-success" })</p>

@@ -24,11 +24,11 @@ namespace BenchBnB.Controllers
             BenchRepository benchRepo = new BenchRepository(context);
             List<Bench> benches = benchRepo.GetBenches();
 
-            AllLists allLists = new AllLists();
-            allLists.Users = users;
-            allLists.Benches = benches;
+            //AllLists allLists = new AllLists();
+            //allLists.Users = users;
+            //allLists.Benches = benches;
 
-            return View("Index", allLists);
+            return View("Index", benches);
         }
 
         [Authorize]

@@ -31,7 +31,6 @@
                 ol.proj.fromLonLat([bench.Longitude, bench.Latitude])
             )
         });
-        console.log(bench);
         vectorSource.addFeature(marker);
     });
 
@@ -41,8 +40,6 @@
     map.addLayer(markerVectorLayer);
 
     map.on('singleclick', async function (event) {
-
-        console.log(event.coordinate);
         event.coordinate = ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326');
         latitude = event.coordinate[1];
         longitude = event.coordinate[0];
