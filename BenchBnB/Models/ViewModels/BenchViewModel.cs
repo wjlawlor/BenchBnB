@@ -3,25 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BenchBnB.Models
+namespace BenchBnB.Models.ViewModels
 {
-    public class Bench
+    public class BenchViewModel
     {
-        public Bench() { }
-
-        public Bench(int id, string name, int seats, string description, decimal latitude, decimal longitude, User user)
-        {
-            Id = id;
-            Name = name;
-            Seats = seats;
-            Description = description;
-            Latitude = latitude;
-            Longitude = longitude;
-
-            User = user;
-            DateDiscovered = DateTime.Now;
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
         public int Seats { get; set; }
@@ -35,9 +20,6 @@ namespace BenchBnB.Models
         public DateTime DateDiscovered { get; set; }
 
         public List<Review> Reviews { get; set; }
-    
-        //ImageMethod()
-
-        //RatingMethod()
+        public List<User> Users { get; set; }
     }
 }

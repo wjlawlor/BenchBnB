@@ -6,6 +6,15 @@ namespace BenchBnB.Models
     {
         public User() { }
 
+        public User(int id, string firstName, string lastName, string email, string password)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+        }
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

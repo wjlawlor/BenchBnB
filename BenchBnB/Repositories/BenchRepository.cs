@@ -19,5 +19,16 @@ namespace BenchBnB.Repositories
         {
             return _context.Benches.ToList();
         }
+
+        public Bench GetBenchById(int id)
+        {
+            return _context.Benches.SingleOrDefault(b => b.Id == id);
+        }
+
+        public void Insert(Bench bench)
+        {
+            _context.Benches.Add(bench);
+            _context.SaveChanges();
+        }
     }
 }
