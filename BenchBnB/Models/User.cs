@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BenchBnB.Models
 {
@@ -21,6 +22,7 @@ namespace BenchBnB.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
+        [JsonIgnore]
         public List<Bench> Benches { get; set; }
         public List<Review> Reviews { get; set; }
     }

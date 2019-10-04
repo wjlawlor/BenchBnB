@@ -39,8 +39,6 @@ namespace BenchBnB.Controllers
             Bench bench = benchRepo.GetBenchById(review.Id);
             ReviewRepository reviewRepo = new ReviewRepository(context);
 
-
-
             if (ModelState.IsValid)
             {
                 Review newReview = new Review(0, user, bench, review.Rating, review.Description);
