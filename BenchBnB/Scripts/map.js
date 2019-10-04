@@ -50,7 +50,7 @@
         let alreadyExists = false;
 
         benchInfo.forEach(bench => {
-            if ((Math.abs(bench.Latitude - latitude) < 0.00025) && (Math.abs(bench.Longitude - longitude) < 0.00025)){
+            if (Math.abs(bench.Latitude - latitude) < 0.00025 && Math.abs(bench.Longitude - longitude) < 0.00025){
                 window.location.href = "Bench/View/" + bench.Id;
                 alreadyExists = true;
             }

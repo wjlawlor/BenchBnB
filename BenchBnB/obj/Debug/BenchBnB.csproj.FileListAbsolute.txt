@@ -42,3 +42,5 @@ C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.dll
 C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.SqlServer.dll
 C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.xml
 C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\EntityFramework.SqlServer.xml
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\BCrypt.Net.dll
+C:\Users\Bill\Desktop\BenchBnB\BenchBnB\bin\BCrypt.Net.xml

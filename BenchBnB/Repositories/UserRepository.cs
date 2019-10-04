@@ -42,7 +42,7 @@ namespace BenchBnB.Repositories
 
             if (_context.Users.SingleOrDefault(u => u.Email == email) != null)
             {
-                if (user.Password == password)
+                if (BCrypt.Net.BCrypt.Verify(password, user.HashedPassword))
                 {
                     return true;
                 }
