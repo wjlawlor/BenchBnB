@@ -12,9 +12,9 @@
     var map = new ol.Map({
         target: 'map',
         layers: [
-          new ol.layer.Tile({
-              source: new ol.source.OSM()
-          })
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
         ],
         view: new ol.View({
             center: ol.proj.fromLonLat([-73.145, 40.7891]),
@@ -41,12 +41,23 @@
     map.addLayer(markerVectorLayer);
 
     map.on('singleclick', async function (event) {
-        debugger;
+
         console.log(event.coordinate);
         event.coordinate = ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326');
         latitude = event.coordinate[1];
         longitude = event.coordinate[0];
-        window.location.href = "Bench/Add?Lat=" + latitude + "&Lon=" + longitude;
-    });
 
+        let alreadyExists = false;
+
+        benchInfo.forEach(bench => {
+            if ((Math.abs(bench.Latitude - latitude) < 0.00025) && (Math.abs(bench.Longitude - longitude) < 0.00025)){
+                window.location.href = "Bench/View/" + bench.Id;
+                alreadyExists = true;
+            }
+        });
+        if (!alreadyExists)
+        {
+            window.location.href = "Bench/Add?Lat=" + latitude + "&Lon=" + longitude;
+        }
+    });
 })();

@@ -6,13 +6,25 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<div style="height: 400px">
+
+<div class="float-right">
+    <div>
+    @Html.Label("Minimum Seats")
+    @Html.TextBox("minSeats", "")
+    </div>
+    <div>
+    @Html.Label("Maximum Seats")
+    @Html.TextBox("maxSeats", "")
+    </div>
+</div>
+
+<div style="height: 470px">
     <div id="map" class="map float-left"></div>
 
-    <script src="~/Scripts/map.js"></script>
+
 
     <div class="scrollable-table float-right" style="width: 60%">
-        <table id="benchList" class="table table-hover table-scroll">
+        <table id="table" class="table table-hover table-scroll">
             <thead class="thead-dark">
                 <tr>
                     <th>Bench</th>
@@ -23,15 +35,16 @@
             <tbody>
                 @foreach (var bench in Model.Benches)
             {
-                    <tr>
+                    <tr data="~/Bench/View/@bench.Id">
                         <td>@bench.Name</td>
                         <td>@bench.Description</td>
-                        <td>@Html.ActionLink("View", "View", "Bench", new { id = bench.Id }, new { @class = "btn btn-primary btn-sm" })</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+<script src="~/Scripts/map.js"></script>
+<script src="~/Scripts/benchList.js"></script>
 <br />
 <p>@Html.ActionLink("Add A Bench!", "Add", null, new { @class = "btn btn-success" })</p>
