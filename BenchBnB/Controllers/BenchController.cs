@@ -2,7 +2,6 @@
 using BenchBnB.Models;
 using BenchBnB.Models.ViewModels;
 using BenchBnB.Repositories;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -20,8 +19,6 @@ namespace BenchBnB.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            //UserRepository userRepo = new UserRepository(context);
-            //List<User> users = userRepo.GetUsers();
             BenchRepository benchRepo = new BenchRepository(context);
             List<Bench> benches = benchRepo.GetBenches();
 

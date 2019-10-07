@@ -152,7 +152,6 @@
     <Content Include="Scripts\addBenchButtonToggler.js" />
     <Content Include="Scripts\addReviewButtonToggler.js" />
     <Content Include="Scripts\BenchIndex\clickableBenchList.js" />
-    <Content Include="Scripts\BenchIndex\map.js" />
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -182,7 +181,7 @@
     <Compile Include="Repositories\IBenchRepository.cs" />
     <Compile Include="Repositories\ReviewRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Content Include="Scripts\BenchIndex\tableGenerator.js" />
+    <Content Include="Scripts\BenchIndex\pageElementsGenerator.js" />
     <Content Include="Scripts\registerButtonToggler.js" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿(async () => {
 
+    // Benches
     const getBenchesUrl = 'http://localhost:52169/api/benches';
 
     async function getListOfBenches() {
@@ -99,21 +100,28 @@
         myTableDiv.innerHTML = HTML;
     };
 
-    const generateMap = function (benchList) {
-        var map = new ol.Map({
-            target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([-73.145, 40.7891]),
-                zoom: 8
-            })
-        });
 
-        var vectorSource = new ol.source.Vector({});
+    // Map Generation
+    
+    var map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([-73.145, 40.7891]),
+            zoom: 8
+        })
+    });
+    var vectorSource = null;
+    const generateMap = function (benchList) {
+        if (vectorSource !== null){
+            vectorSource.clear();
+        }
+
+        vectorSource = new ol.source.Vector({});
 
         const markerArray = [];
         benchList.forEach(bench => {
@@ -153,7 +161,9 @@
     // Default Full Table
     createTable(benchInfo);
 
+    // Set Up Filter Event Handler
     filterMinMaxSeats();
 
+    // Draw Map
     generateMap(benchInfo);
 })();
