@@ -65,18 +65,20 @@ namespace BenchBnB.Controllers
                 ModelState.AddModelError("","Email already exists.");
             }
 
-            if (ModelState.IsValidField("Email") && ModelState.IsValidField("FirstName")
-               && ModelState.IsValidField("LastName") && ModelState.IsValidField("Password"))
+            if (ModelState.IsValid)
             {
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(viewModel.Password, 12);
+                if (ModelState.IsValidField("Email") && ModelState.IsValidField("FirstName")
+                    && ModelState.IsValidField("LastName") && ModelState.IsValidField("Password"))
+                {
+                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(viewModel.Password, 12);
 
-                User newUser = new User(0, viewModel.FirstName, viewModel.LastName, viewModel.Email, hashedPassword);
-                userRepo.Insert(newUser);
+                    User newUser = new User(0, viewModel.FirstName, viewModel.LastName, viewModel.Email, hashedPassword);
+                    userRepo.Insert(newUser);
 
-                FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                return RedirectToAction("Index", "Bench");
+                    FormsAuthentication.SetAuthCookie(viewModel.Email, false);
+                    return RedirectToAction("Index", "Bench");
+                }
             }
-
             return View(viewModel);
         }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace BenchBnB.Models.ViewModels
 {
@@ -13,6 +12,8 @@ namespace BenchBnB.Models.ViewModels
         public string Description { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
+        [Display(Name = "Average Rating")]
+        public string AverageRating { get; set; }
 
         public int UserId { get; set; }
         public User User { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,10 @@ namespace BenchBnB.Models
 {
     public class Bench
     {
-        public Bench() { }
+        public Bench()
+        {
+            List<Review> reviews = new List<Review>();
+        }
 
         public Bench(int id, string name, int seats, string description, decimal latitude, decimal longitude, User user)
         {
@@ -25,6 +29,7 @@ namespace BenchBnB.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Seats { get; set; }
+        [Required]
         public string Description { get; set; }
         
         public decimal Latitude { get; set; }
@@ -44,7 +49,7 @@ namespace BenchBnB.Models
             get {
                 if (Reviews.Count > 0)
                 {
-                    int sum = 0;
+                    decimal sum = 0;
                     foreach (var review in Reviews)
                     {
                         sum += review.Rating;

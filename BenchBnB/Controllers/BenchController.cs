@@ -55,7 +55,7 @@ namespace BenchBnB.Controllers
                 Bench newBench = new Bench(0, bench.Name, bench.Seats, bench.Description, bench.Latitude, bench.Longitude, user);
                 benchRepo.Insert(newBench);
 
-                return RedirectToAction("Index", "Home", null);
+                return RedirectToAction("Index", "Bench", null);
             }
 
             return View("Create", bench);
@@ -84,6 +84,14 @@ namespace BenchBnB.Controllers
             viewModel.DateDiscovered = bench.DateDiscovered;
             viewModel.Latitude = bench.Latitude;
             viewModel.Longitude = bench.Longitude;
+            if (bench.Rating == null)
+            {
+                viewModel.AverageRating = "No ratings.";
+            }
+            else
+            {
+                viewModel.AverageRating = bench.Rating.Value.ToString("0.#");
+            }
             viewModel.Reviews = reviews;
             viewModel.Users = users;
 

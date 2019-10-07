@@ -23,7 +23,7 @@ namespace BenchBnB.Repositories
 
         public Bench GetBenchById(int id)
         {
-            return _context.Benches.SingleOrDefault(b => b.Id == id);
+            return _context.Benches.Include(b => b.User).Include(b => b.Reviews).SingleOrDefault(b => b.Id == id);
         }
 
         public void Insert(Bench bench)

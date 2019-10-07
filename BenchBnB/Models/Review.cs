@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BenchBnB.Models
 {
@@ -27,6 +28,7 @@ namespace BenchBnB.Models
         [JsonIgnore]
         public Bench Bench { get; set; }
 
+        [Required]
         public string Description { get; set; }
         public int Rating { get; set; }
         public DateTime DateCreated { get; set; }

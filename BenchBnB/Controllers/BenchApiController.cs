@@ -32,6 +32,8 @@ namespace BenchBnB.Controllers
                 benchDTO.Description = bench.Description;
                 benchDTO.User = bench.User;
                 benchDTO.AverageRating = bench.Rating;
+                benchDTO.Latitude = bench.Latitude;
+                benchDTO.Longitude = bench.Longitude;
                 benchDTO.DateDiscovered = bench.DateDiscovered;
                 data.Add(benchDTO);
             }
