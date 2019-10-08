@@ -1,11 +1,9 @@
 ﻿using BenchBnB.Data;
 using BenchBnB.Models;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace BenchBnB.Repositories
 {
@@ -20,12 +18,12 @@ namespace BenchBnB.Repositories
 
         public List<Bench> GetBenches()
         {
-            return _context.Benches.ToList();
+            return _context.Benches.Include(b => b.Reviews).ToList();
         }
 
         public Bench GetBenchById(int id)
         {
-            return _context.Benches.SingleOrDefault(b => b.Id == id);
+            return _context.Benches.Include(b => b.User).Include(b => b.Reviews).SingleOrDefault(b => b.Id == id);
         }
 
         public void Insert(Bench bench)
@@ -38,7 +36,7 @@ namespace BenchBnB.Repositories
         {
             using (var context = new Context())
             {
-                return await context.Benches.ToListAsync();
+                return await context.Benches.Include(b => b.Reviews).Include(b => b.User).ToListAsync();
             }
         }
     }

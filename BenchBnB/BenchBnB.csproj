@@ -44,6 +44,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -147,7 +151,7 @@
   <ItemGroup>
     <Content Include="Scripts\addBenchButtonToggler.js" />
     <Content Include="Scripts\addReviewButtonToggler.js" />
-    <Content Include="Scripts\map.js" />
+    <Content Include="Scripts\BenchIndex\clickableBenchList.js" />
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +169,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bench.cs" />
+    <Compile Include="Models\DTOs\BenchDTO.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModels\AllLists.cs" />
@@ -176,6 +181,7 @@
     <Compile Include="Repositories\IBenchRepository.cs" />
     <Compile Include="Repositories\ReviewRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Content Include="Scripts\BenchIndex\pageElementsGenerator.js" />
     <Content Include="Scripts\registerButtonToggler.js" />
   </ItemGroup>
   <ItemGroup>

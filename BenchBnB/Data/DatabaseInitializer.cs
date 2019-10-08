@@ -14,7 +14,7 @@ namespace BenchBnB.Data
                 FirstName = "Mo",
                 LastName = "Salam",
                 Email = "msalam@gmail.com",
-                Password = "password"
+                HashedPassword = "$2a$12$L73qjlARoiJwj1ZSrrS0xewkBQcmRBqbLW0UFPa6a1bweJwwUPel2"
             };
             context.Users.Add(mo);
             var jason = new User()
@@ -22,7 +22,7 @@ namespace BenchBnB.Data
                 FirstName = "Jason",
                 LastName = "Lu",
                 Email = "jlu@gmail.com",
-                Password = "password"
+                HashedPassword = "$2a$12$L73qjlARoiJwj1ZSrrS0xewkBQcmRBqbLW0UFPa6a1bweJwwUPel2"
             };
             context.Users.Add(jason);
 

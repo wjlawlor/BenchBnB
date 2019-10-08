@@ -2,7 +2,6 @@
 using BenchBnB.Models;
 using BenchBnB.Models.ViewModels;
 using BenchBnB.Repositories;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -17,21 +16,13 @@ namespace BenchBnB.Controllers
             context = new Context();
         }
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            UserRepository userRepo = new UserRepository(context);
-            List<User> users = userRepo.GetUsers();
             BenchRepository benchRepo = new BenchRepository(context);
             List<Bench> benches = benchRepo.GetBenches();
 
-            var json = JsonConvert.SerializeObject(benches);
-
-            AllLists allLists = new AllLists();
-            allLists.Users = users;
-            allLists.Benches = benches;
-            allLists.JsonList = json;
-
-            return View("Index", allLists);
+            return View("Index", benches);
         }
 
         [Authorize]
@@ -61,7 +52,7 @@ namespace BenchBnB.Controllers
                 Bench newBench = new Bench(0, bench.Name, bench.Seats, bench.Description, bench.Latitude, bench.Longitude, user);
                 benchRepo.Insert(newBench);
 
-                return RedirectToAction("Index", "Home", null);
+                return RedirectToAction("Index", "Bench", null);
             }
 
             return View("Create", bench);
@@ -90,6 +81,14 @@ namespace BenchBnB.Controllers
             viewModel.DateDiscovered = bench.DateDiscovered;
             viewModel.Latitude = bench.Latitude;
             viewModel.Longitude = bench.Longitude;
+            if (bench.Rating == null)
+            {
+                viewModel.AverageRating = "No ratings.";
+            }
+            else
+            {
+                viewModel.AverageRating = bench.Rating.Value.ToString("0.#");
+            }
             viewModel.Reviews = reviews;
             viewModel.Users = users;
 

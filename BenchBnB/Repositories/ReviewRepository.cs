@@ -20,7 +20,7 @@ namespace BenchBnB.Repositories
 
         public List<Review> GetReviewsByBench(int id)
         {
-            return _context.Reviews.Where(r => r.BenchId == id).ToList();
+            return _context.Reviews.Where(r => r.BenchId == id).OrderByDescending(r => r.DateCreated).ToList();
         }
 
         public void Insert(Review review)

@@ -51,28 +51,43 @@
     </div>
 }
 
-<br />
+<div class="form-group row">
+    <div class="col-xs-3 ml-3">
+        @Html.LabelFor(m => m.AverageRating)
+        @Html.TextBoxFor(m => m.AverageRating, new { @class = "form-control", disabled = "disabled" })
+    </div>
+</div>
+
 <div id="scrollTable" class="scrollTable" style="width: 70%">
-    <table id="benchList" class="table table-hover table-scroll">
+    <table id="reviewList" class="table table-hover table-scroll">
         <thead class="thead-dark">
             <tr>
                 <th>Rating</th>
                 <th>User</th>
                 <th>Description</th>
                 <th>Created</th>
-
             </tr>
         </thead>
         <tbody>
-            @foreach (var review in Model.Reviews)
+            @if (Model.Reviews.Count > 0)
+            {
+                foreach (var review in Model.Reviews)
+                {
+                    <tr>
+                        <td>@review.Rating</td>
+                        <td>@review.User.FirstName @review.User.LastName.Substring(0, 1).</td>
+                        <td>@review.Description</td>
+                        <td>@review.DateCreated.ToString("d")</td>
+                    </tr>
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@review.Rating</td>
-                    <td>@review.User.FirstName</td>
-                    <td>@review.Description</td>
-                    <td>@review.DateCreated.ToString("d")</td>
+                    <td>No reviews.</td>
                 </tr>
             }
+
         </tbody>
     </table>
 </div>

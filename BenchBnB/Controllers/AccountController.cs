@@ -2,7 +2,6 @@
 using BenchBnB.Models;
 using BenchBnB.Models.ViewModels;
 using BenchBnB.Repositories;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -29,14 +28,21 @@ namespace BenchBnB.Controllers
         public ActionResult Login(LoginViewModel viewModel)
         {
             UserRepository userRepo = new UserRepository(context);
-            bool goodLogin = userRepo.LoginUser(viewModel.Email, viewModel.Password);
 
-            if (goodLogin)
+            if (ModelState.IsValidField("Email") && ModelState.IsValidField("Password"))
             {
-                FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                return RedirectToAction("Index", "Bench");
-            }
+                bool goodLogin = userRepo.LoginUser(viewModel.Email, viewModel.Password);
 
+                if (goodLogin)
+                {
+                    FormsAuthentication.SetAuthCookie(viewModel.Email, false);
+                    return RedirectToAction("Index", "Bench");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Wrong username or password.");
+                }
+            }
             return View(viewModel);
         }
 
@@ -57,18 +63,22 @@ namespace BenchBnB.Controllers
             if (doesUserExist != null)
             {
                 ModelState.AddModelError("","Email already exists.");
-                return View(viewModel);
             }
 
             if (ModelState.IsValid)
             {
-                User newUser = new User(0, viewModel.FirstName, viewModel.LastName, viewModel.Email, viewModel.Password);
-                userRepo.Insert(newUser);
+                if (ModelState.IsValidField("Email") && ModelState.IsValidField("FirstName")
+                    && ModelState.IsValidField("LastName") && ModelState.IsValidField("Password"))
+                {
+                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(viewModel.Password, 12);
 
-                FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                return RedirectToAction("Index", "Bench");
+                    User newUser = new User(0, viewModel.FirstName, viewModel.LastName, viewModel.Email, hashedPassword);
+                    userRepo.Insert(newUser);
+
+                    FormsAuthentication.SetAuthCookie(viewModel.Email, false);
+                    return RedirectToAction("Index", "Bench");
+                }
             }
-
             return View(viewModel);
         }
 
